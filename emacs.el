@@ -3,6 +3,12 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
+;;; remove SC if you are not using sunrise commander and org if you like outdated packages
+(setq package-archives '(("ELPA"  . "http://tromey.com/elpa/")
+			 ("gnu"   . "http://elpa.gnu.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")
+			 ("org"   . "https://orgmode.org/elpa/")
+			 ("SC"    . "http://joseito.republika.pl/sunrise-commander/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
