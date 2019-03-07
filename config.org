@@ -1,0 +1,42 @@
+* shortcuts
+ #+BEGIN_SRC  emacs-lisp
+   (setq make-backup-file nil)
+   (setq auto-save-default nil)
+   (defalias 'yes-or-no-p 'y-or-n-p)
+   (setq scroll-conservatively 100)
+   (setq ring-bell-function 'ignore)
+   (when window-system (global-hl-line-mode t))
+   (when window-system (global-prettify-symbols-mode t)) 
+ #+END_SRC
+* bullets
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+END_SRC
+* Time format
+#+BEGIN_SRC  emacs-lisp
+(setq display-time-24hr-format t)
+(setq display-time-format "%H:%M - %d %B %Y")
+#+END_SRC
+* Enabling the mode
+
+This turns on the clock globally.
+#+BEGIN_SRC emacs-lisp
+(display-time-mode 1)
+#+END_SRC
+
+* Battery indicator
+A package called fancy-battery will be used if we are in GUI emacs, otherwise the built in battery-mode will be used. Fancy battery has very odd colors if used in the tty, hence us disabling it.
+#+BEGIN_SRC emacs-lisp
+
+(use-package fancy-battery
+  :ensure t
+  :config
+    (setq fancy-battery-show-percentage t)
+    (setq battery-update-interval 15)
+    (if window-system
+      (fancy-battery-mode)
+      (display-battery-mode)))
+#+END_SRC
