@@ -20,21 +20,6 @@
   (package-install 'spacemacs-theme))
 
 (org-babel-load-file (expand-file-name "~/config.org"))
-(use-package which-key
-  :ensure t
-  :init
-  (which-key-mode))
-
-(use-package beacon
-  :ensure t
-  :init
-  (beacon-mode 1))
-
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-(setq inhibit-startup-message t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
