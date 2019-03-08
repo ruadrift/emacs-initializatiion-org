@@ -1,3 +1,10 @@
+* display
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-startup-message t)
+#+END_SRC
 * shortcuts
  #+BEGIN_SRC  emacs-lisp
    (setq make-backup-file nil)
@@ -39,4 +46,16 @@ A package called fancy-battery will be used if we are in GUI emacs, otherwise th
     (if window-system
       (fancy-battery-mode)
       (display-battery-mode)))
+#+END_SRC
+* packages
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
+
+(use-package beacon
+  :ensure t
+  :init
+  (beacon-mode 1))
 #+END_SRC
