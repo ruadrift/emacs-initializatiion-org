@@ -93,3 +93,29 @@ A package called fancy-battery will be used if we are in GUI emacs, otherwise th
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x b") 'ibuffer)
 #+END_SRC
+** expert
+#+BEGIN_SRC  emacs-lisp
+(setq ibuffer-expert t)
+#+END_SRC
+* avy
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind
+    ("M-s" . avy-goto-char))
+#+END_SRC
+* config edit/reload
+** reload
+#+BEGIN_SRC emacs-lisp
+  (defun config-reload ( )
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/config.org")))
+  (global-set-key (kbd "C-c r") 'config-reload)
+#+END_SRC
+** edit
+#+BEGIN_SRC emacs-lisp
+  (defun config-visit ( )
+    (interactive)
+    (find-file "~/config.org"))
+  (global-set-key (kbd "C-c e") 'config-visit)
+#+END_SRC
