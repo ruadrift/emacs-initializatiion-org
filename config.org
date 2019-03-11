@@ -60,7 +60,7 @@ A package called fancy-battery will be used if we are in GUI emacs, otherwise th
   (beacon-mode 1))
 #+END_SRC
 
-* IDO
+* IDO c-x c-b
 ** enable ido mode
 #+BEGIN_SRC emacs-lisp
 (setq ido-enable-flex-matching nil)
@@ -88,7 +88,7 @@ A package called fancy-battery will be used if we are in GUI emacs, otherwise th
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd  "C-x C-b") 'ido-switch-buffer)
 #+END_SRC
-* buffers
+* buffers c-x b
 ** enable ibuffer
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x b") 'ibuffer)
@@ -97,14 +97,14 @@ A package called fancy-battery will be used if we are in GUI emacs, otherwise th
 #+BEGIN_SRC  emacs-lisp
 (setq ibuffer-expert t)
 #+END_SRC
-* avy
+* avy Alt-s
 #+BEGIN_SRC emacs-lisp
   (use-package avy
     :ensure t
     :bind
     ("M-s" . avy-goto-char))
 #+END_SRC
-* config edit/reload
+* config edit/reload C-c e and C-c r
 ** reload
 #+BEGIN_SRC emacs-lisp
   (defun config-reload ( )
@@ -118,4 +118,34 @@ A package called fancy-battery will be used if we are in GUI emacs, otherwise th
     (interactive)
     (find-file "~/config.org"))
   (global-set-key (kbd "C-c e") 'config-visit)
+#+END_SRC
+* switch-window C-x o
+#+BEGIN_SRC emacs-lisp
+  (use-package switch-window
+    :ensure t
+    :config
+    (setq switch-window-input-style 'minibuffer)
+    (setq switch-window-increase 4)
+    (setq switch-window-threshold 2)
+    (setq switch-window-shortcut-style 'qwerty)
+    (setq switch-window-qwerty-shortcuts
+	  '("a" "s" "d" "f" "j" "k" "l"))
+    :bind
+    ([remap other-window] . switch-window))
+#+END_SRC
+* window splitting function c-x 2 and c-x 3
+#+BEGIN_SRC emacs-lisp
+  (defun split-and-follow-horizontally ( )
+    (interactive)
+    (split-window-below)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+  (defun split-and-follow-vertically ( )
+    (interactive)
+    (split-window-right)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 #+END_SRC
